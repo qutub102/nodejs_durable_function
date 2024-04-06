@@ -15,7 +15,7 @@ const tasks = {};
 const simulateLongRunningTask = (taskId) => {
     setTimeout(() => {
         tasks[taskId] = "Completed";
-    }, 50000); // Simulating a 10-second long-running process
+    }, 120000); // Simulating a 10-second long-running process
 };
 
 // Endpoint to initiate the task
@@ -41,7 +41,7 @@ app.get('/check_status/:taskId', (req, res) => {
     if (status === "Completed") {
         return res.status(200).json({ status });
     } else {
-        return setTimeout(() => res.status(202).json({ status }),4000) // Task still running, return 202 Accepted
+        return setTimeout(() => res.status(202).json({ status }),5000) // Task still running, return 202 Accepted
     }
 });
 
